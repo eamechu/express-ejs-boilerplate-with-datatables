@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <% include ../partials/head %>
+    <link rel="stylesheet" href="/datatables/css/datatables.bootstrap.min.css">
+    <link rel="stylesheet" href="/datatables/css/buttons.datatables.min.css">
+    <link rel="stylesheet" href="/datatables/css/fixedheader.bootstrap.min.css">
+    <link rel="stylesheet" href="/datatables/css/responsive.bootstrap.min.css">
+  </head>
+
+  <body>
+
+    <div class="container-fluid">
+        <div class="row">
+
+          <% include ../partials/header %>
+
+            <div class="col-md-3">
+                <% include ../partials/sidebar %>
+            </div>
+
+            <div class="col-md-9">
+
+              <table class="table table-bordered table-striped dt-responsive nowrap" cellspacing="0" width="100%" id="drinktable">
+                   <thead>
+                       <tr>
+                       <th>Name</th>
+                       <th>Drunkenness</th>
+                       <th>Advise</th>
+                       <th>Risk Level</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                      <% if (locals.drinks) { %>
+                        <% drinks.forEach(function(drink) { %>
+                               <tr>
+                               <td><%= drink.name %></td>
+                               <td><%= drink.drunkness %></td>
+                               <td><%= drink.advise %></td>
+                               <td><%= drink.risk %></td>
+                               </tr>
+                        <% }); %>
+                      <% } else{ %>
+                        <tr>
+                          <td>No Data Found</td>
+                          <td>No Data Found</td>
+                          <td>No Data Found</td>
+                          <td>No Data Found</td>
+                        </tr>
+                      <% } %>
+
+                   </tbody>
+               </table>
+
+            </div>
+
+            <div class="col-md-12 col-sm-12">
+
+              <% include ../partials/footer %>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="/js/jquery3.3.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/datatables/js/jquery.datatables.min.js"></script>
+    <script src="/datatables/js/datatables.bootstrap.min.js"></script>
+    <script src="/datatables/js/datatables.fixedheader.min.js"></script>
+    <script src="/datatables/js/datatables.responsive.min.js"></script>
+    <script src="/datatables/js/responsive.bootstrap.min.js"></script>
+    <script src="/datatables/js/datatables.buttons.min.js"></script>
+    <script src="/datatables/js/datatables.buttons-flash.min.js"></script>
+    <script src="/datatables/js/jszip.min.js"></script>
+    <script src="/datatables/js/pdfmake.min.js"></script>
+    <script src="/datatables/js/vfs-fonts.min.js"></script>
+    <script src="/datatables/js/buttons.html5.min.js"></script>
+    <script src="/datatables/js/buttons.print.min.js"></script>
+  </body>
+
+  <script>
+      $(document).ready(function() {
+          var table = $('#drinktable').DataTable( {
+              responsive: true
+          } );
+
+          new $.fn.dataTable.FixedHeader( table );
+      } );
+  </script>
+
+</html>
