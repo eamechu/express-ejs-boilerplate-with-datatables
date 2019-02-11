@@ -3,7 +3,7 @@ A simple Express with EJS templating Engine Boilerplate with responsive Datatabl
 
 Clone the Repository from your preferred Command Prompt
 
-`# git clone`
+`# git clone https://github.com/eamechu/express-ejs-boilerplate-with-datatables.git`
 
 Change Directory into the Project Directory
 `# cd express-ejs-boilerplate-with-datatables/`
